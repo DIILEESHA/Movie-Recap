@@ -3,10 +3,11 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Movie from "../movie/Movie";
 import Trending from "../trending/Trending";
+import LatestTrailers from "../latest/LatestTrailers";
 
 const Home = () => {
   const [popularMovies, setPopularMovies] = useState([]);
-  const [backgroundImage, setBackgroundImage] = useState('');
+  const [backgroundImage, setBackgroundImage] = useState("");
   const [latestMovies, setLatestMovies] = useState([]);
 
   useEffect(() => {
@@ -30,35 +31,39 @@ const Home = () => {
     };
 
     const fetchRandomBackdrop = async () => {
-        // Fetch a random backdrop image
-        const apiKey = "f9d26affa6d3bd80057602fdde544c98";
+      // Fetch a random backdrop image
+      const apiKey = "f9d26affa6d3bd80057602fdde544c98";
 
-        const response = await axios.get(
-          `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=en-US&page=1`
-        );
-        const randomMovie =
-          response.data.results[Math.floor(Math.random() * response.data.results.length)];
-        setBackgroundImage(`https://image.tmdb.org/t/p/original/${randomMovie.backdrop_path}`);
-      };
-  
-      fetchPopularMovies();
-      fetchLatestMovies();
-      fetchRandomBackdrop();
-    }, []);
+      const response = await axios.get(
+        `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=en-US&page=1`
+      );
+      const randomMovie =
+        response.data.results[
+          Math.floor(Math.random() * response.data.results.length)
+        ];
+      setBackgroundImage(
+        `https://image.tmdb.org/t/p/original/${randomMovie.backdrop_path}`
+      );
+    };
+
+    fetchPopularMovies();
+    fetchLatestMovies();
+    fetchRandomBackdrop();
+  }, []);
 
   return (
     <div
-    className="home-container"
-    style={{
-    //   backgroundImage: `url(${backgroundImage})`,
-      backgroundSize: 'cover',
-      backgroundPosition: 'center',
-      minHeight: '100vh',
-      color: 'white', // Adjust text color for visibility
-    }}
-  >
+      className="home-container"
+      style={{
+        //   backgroundImage: `url(${backgroundImage})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        minHeight: "100vh",
+        color: "white", // Adjust text color for visibility
+      }}
+    >
       <Movie title="Popular Movies" movies={popularMovies} />
-
+      <LatestTrailers />
       <Movie title="Latest Movies" movies={latestMovies} />
       {/* <Trending /> */}
     </div>

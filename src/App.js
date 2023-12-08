@@ -4,6 +4,7 @@ import Movie from "./component/movie/Movie";
 import Home from "./component/home/Home";
 import Navbar from "./component/navbar/Navbar";
 import Trending from "./component/trending/Trending";
+import LatestTrailers from "./component/latest/LatestTrailers";
 
 function App() {
   return (

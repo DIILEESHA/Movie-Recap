@@ -1,0 +1,104 @@
+.trailor_container {
+  background-color: var(--background-color);
+  padding: 30px 60px 30px 60px;
+  color: #fff;
+}
+
+.trailor {
+  height: 50vh;
+  padding: 20px 60px 10px 60px;
+
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  justify-content: center;
+  overflow: scroll;
+  overflow-y: hidden;
+  /* margin-bottom: 40px; */
+}
+
+.trailor {
+}
+.trailer-card {
+  /* height: 190px; */
+  display: flex;
+  justify-content: flex-start;
+}
+.trailer-card button {
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+  margin-bottom: 10px;
+}
+.trailer-card img {
+  margin-bottom: 5px;
+
+  width: 290px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+.sm {
+  color: #fff;
+}
+
+/* Add your styles in App.css or another stylesheet file */
+.modal {
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+}
+
+.modal-content {
+  background-color: #000;
+  padding: 10px;
+  border-radius: 5px;
+  max-width: 800px;
+  height: 60vh;
+  width: 100%;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.trail {
+  position: relative;
+}
+.player {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  height: 200px;
+  border-radius: 5px;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.play_icon {
+  color: #ddd;
+  font-size: 45px;
+}
+.play_icon:hover {
+  /* color: teal; */
+}
+
+.trailer-card:hover {
+  transform: scale(1.1);
+}
