@@ -14,7 +14,7 @@ const Trending = () => {
       const apiKey = "f9d26affa6d3bd80057602fdde544c98";
 
       const response = await axios.get(
-        `https://api.themoviedb.org/3/movie/now_playing?api_key=${apiKey}&language=en-US&page=1`
+    `https://api.themoviedb.org/3/trending/movie/day?api_key=${apiKey}`
       );
       setLatestMovies(response.data.results);
     };

@@ -28,6 +28,7 @@ const Header = () => {
       className="header_container"
       //   style={{ backgroundImage: `url(${backgroundImage})` }}
     >
+        <div className="jy"></div>
       <div className="img_container">
         <img src={`${backgroundImage}`} alt="" />
         <div className="dk">

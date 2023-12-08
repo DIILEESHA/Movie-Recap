@@ -3,6 +3,8 @@
   padding: 30px 60px 30px 60px;
   color: #fff;
 }
+.bgClassName {
+}
 
 .trailor {
   height: 50vh;
@@ -33,6 +35,7 @@
 .trailer-card img {
   margin-bottom: 5px;
 
+  opacity: 100%;
   width: 290px;
   height: 200px;
   object-fit: cover;
@@ -102,3 +105,5 @@
 .trailer-card:hover {
   transform: scale(1.1);
 }
+
+

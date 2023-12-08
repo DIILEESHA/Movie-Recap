@@ -9,6 +9,7 @@ const Home = () => {
   const [popularMovies, setPopularMovies] = useState([]);
   const [backgroundImage, setBackgroundImage] = useState("");
   const [latestMovies, setLatestMovies] = useState([]);
+  const [trendingMovies, setTrendingMovies] = useState([]);
 
   useEffect(() => {
     const fetchPopularMovies = async () => {
@@ -20,6 +21,14 @@ const Home = () => {
       setPopularMovies(response.data.results);
     };
 
+    const fetchTrendingMovies = async () => {
+      // Fetch popular movies
+      const apiKey = "f9d26affa6d3bd80057602fdde544c98";
+      const response = await axios.get(
+        `https://api.themoviedb.org/3/trending/movie/day?api_key=${apiKey}`
+      );
+      setTrendingMovies(response.data.results);
+    };
     const fetchLatestMovies = async () => {
       // Fetch latest movies
       const apiKey = "f9d26affa6d3bd80057602fdde544c98";
@@ -45,7 +54,7 @@ const Home = () => {
         `https://image.tmdb.org/t/p/original/${randomMovie.backdrop_path}`
       );
     };
-
+    fetchTrendingMovies();
     fetchPopularMovies();
     fetchLatestMovies();
     fetchRandomBackdrop();
@@ -62,9 +71,11 @@ const Home = () => {
         color: "white", // Adjust text color for visibility
       }}
     >
-      <Movie title="Popular Movies" movies={popularMovies} />
+      <Movie title="Trending Movies" movies={trendingMovies} />
+
       <LatestTrailers />
-      <Movie title="Latest Movies" movies={latestMovies} />
+      <Movie title="Popular Movies" movies={popularMovies} />
+      {/* <Movie title="Latest Movies" movies={latestMovies} /> */}
       {/* <Trending /> */}
     </div>
   );

@@ -1,0 +1,32 @@
+/* SkeletonLoader.css */
+.skeleton-loader {
+  background-color: #f0f0f0; /* Set the background color of the skeleton */
+  border-radius: 8px; /* Set the border radius to match your card */
+  height: 260px; /* Set the height to match the image height */
+  width: 169px; /* Set the width to match the image width */
+  margin-bottom: 15px; /* Add margin to separate skeletons */
+
+background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite linear;
+}
+
+@keyframes shimmer {
+  to {
+    background-position: -200% 0;
+  }
+}
+
+
+
+.skeleton-loader2 {
+  background-color: #c7c2c2; /* Set the background color of the skeleton */
+  width: 290px;
+  height: 200px;
+  border-radius: 5px;
+  animation: shimmer 1.5s infinite linear;
+  
+background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+background-size: 200% 100%;
+
+}
