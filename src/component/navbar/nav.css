@@ -1,0 +1,42 @@
+.nav_container {
+  display: flex;
+  align-items: center;
+  height: 70px;
+  background-color: var(--background-color);
+  padding: var(--main-padding);
+  align-items: center;
+  justify-content: center;
+  top: 0;
+  position: sticky;
+  z-index: 100;
+}
+.nav_right {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+}
+.nav_left {
+  flex: 3;
+}
+.logger {
+  object-fit: cover;
+  cursor: pointer;
+  font-size: 50px;
+  color: rgba(245, 175, 25, 1);
+}
+.nav_ul {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+}
+.nav_ul > li {
+  color: #ddd;
+  cursor: pointer;
+  font-weight: 600;
+  text-transform: capitalize;
+  list-style: none;
+}
+
+.duca {
+  font-size: 25px;
+}
