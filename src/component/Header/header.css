@@ -1,16 +1,16 @@
 .header_container {
-  height: 60vh;
+  height: 70vh;
   width: 100%;
   position: relative;
 }
 .img_container img {
-  height: 60vh;
+  height: 70vh;
   width: 100%;
   object-fit: cover;
 }
 .img_container {
   position: relative;
-  height: 60vh;
+  height: 70vh;
   width: 100%;
 }
 

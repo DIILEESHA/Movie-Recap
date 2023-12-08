@@ -1,7 +1,7 @@
 // Home.js
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import Movie from "../Movie";
+import Movie from "../movie/Movie";
 import Trending from "../trending/Trending";
 
 const Home = () => {
@@ -57,7 +57,7 @@ const Home = () => {
       color: 'white', // Adjust text color for visibility
     }}
   >
-      {/* <Movie title="Popular Movies" movies={popularMovies} /> */}
+      <Movie title="Popular Movies" movies={popularMovies} />
 
       <Movie title="Latest Movies" movies={latestMovies} />
       {/* <Trending /> */}

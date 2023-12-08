@@ -1,6 +1,6 @@
 import "./App.css";
 import Header from "./component/Header/Header";
-import Movie from "./component/Movie";
+import Movie from "./component/movie/Movie";
 import Home from "./component/home/Home";
 import Navbar from "./component/navbar/Navbar";
 import Trending from "./component/trending/Trending";
@@ -10,6 +10,7 @@ function App() {
     <div className="App">
       <Navbar />
       <Header />
+      <Home />
     </div>
   );
 }
