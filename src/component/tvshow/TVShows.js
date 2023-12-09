@@ -2,7 +2,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import dayjs from "dayjs";
-import "./allmovie.css";
 import Dropdown from "react-dropdown";
 import "react-dropdown/style.css";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
@@ -10,8 +9,8 @@ import ReactPaginate from "react-paginate";
 
 // ... (imports)
 
-const Allmovie = () => {
-  const [movie, setTVShows] = useState([]);
+const TvShows = () => {
+  const [tvShows, setTVShows] = useState([]);
   const [genres, setGenres] = useState([]);
   const [selectedGenre, setSelectedGenre] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
@@ -21,7 +20,7 @@ const Allmovie = () => {
     const fetchTVShows = async () => {
       const apiKey = "f9d26affa6d3bd80057602fdde544c98";
 
-      let url = `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=en-US&page=${currentPage}`;
+      let url = `https://api.themoviedb.org/3/discover/tv?api_key=${apiKey}&language=en-US&page=${currentPage}`;
 
       if (selectedGenre) {
         const selectedGenreObject = genres.find(
@@ -74,7 +73,7 @@ const Allmovie = () => {
       </div>
 
       <div className="moviekit_card">
-        {movie.map((tvShow) => (
+        {tvShows.map((tvShow) => (
           <div className="movie_sub_card" key={tvShow.id}>
             <div className="movie_sub_image">
               <img
@@ -98,7 +97,7 @@ const Allmovie = () => {
             </div>
             <div className="sub-card">
               <h3 className="movie_title">
-                {tvShow?.title.slice(0, 15)}
+                {tvShow.name.slice(0, 15)}
                 {"..."}
               </h3>
               <h5 className="date">
@@ -120,11 +119,8 @@ const Allmovie = () => {
         activeClassName={"active"}
         initialPage={0} // Set the initial page to 0
       />
-
-
     </div>
   );
 };
 
-export default Allmovie;
-
+export default TvShows;

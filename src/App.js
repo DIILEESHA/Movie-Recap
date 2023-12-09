@@ -4,6 +4,7 @@ import Navbar from "./component/navbar/Navbar";
 import Footer from "./component/footer/Footer";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import Allmovie from "./component/allmovie/Allmovie";
+import TvShows from "./component/tvshow/TVShows";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/movie" element={<Allmovie />} />
+          <Route path="/tv-shows" element={<TvShows />} />
         </Routes>
         <Footer />
       </BrowserRouter>

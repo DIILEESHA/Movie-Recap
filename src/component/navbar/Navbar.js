@@ -27,7 +27,11 @@ const Navbar = () => {
               movies
             </Link>
           </li>
-          <li>TV Shows</li>
+          <li>
+            <Link className="linka" to="/tv-shows">
+              TV Shows
+            </Link>
+          </li>
           <li>
             <IoMdSearch className="duca" />
           </li>

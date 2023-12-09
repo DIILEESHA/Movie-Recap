@@ -1,5 +1,6 @@
 .movies_container {
   padding: 40px 60px;
+  height: auto;
 }
 
 .movie_end {
@@ -36,17 +37,23 @@
   object-fit: cover;
 }
 
+.active {
+  /* width: 50px; */
+}
+
 .pagination {
   display: flex;
-  justify-content: center;
+  justify-content: end;
   list-style: none;
   padding: 0;
+  /* justify-content: space-around; */
   margin-top: 50px;
-  width: 100%;
+  /* width: 100%; */
 
   li {
     margin: 0 5px;
     display: inline-block;
+    display: flex;
     cursor: pointer;
 
     a {
