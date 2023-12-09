@@ -11,13 +11,13 @@ const Navbar = () => {
       <div className="nav_left">
         <div className="logo">
           <Link to="/">
-          <SiThemoviedatabase
-            className="logger"
-            style={{
-              color: "linear-gradient(to right, #f5af19, #f12711)", // Your gradient color
-            }}
+            <SiThemoviedatabase
+              className="logger"
+              style={{
+                color: "linear-gradient(to right, #f5af19, #f12711)", // Your gradient color
+              }}
             />
-            </Link>
+          </Link>
         </div>
       </div>
       <div className="nav_right">

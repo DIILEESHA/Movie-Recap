@@ -50,6 +50,12 @@ const TVShows = () => {
     setCurrentPage(data.selected + 1);
   };
 
+  const handleLoadMore = () => {
+    if (currentPage < totalPages) {
+      setCurrentPage((prevPage) => prevPage + 1);
+    }
+  };
+
   return (
     <div className="movies_container">
       <div className="movie_end">
@@ -114,6 +120,8 @@ const TVShows = () => {
         activeClassName={"active"}
         initialPage={0} // Set the initial page to 0
       />
+
+
     </div>
   );
 };

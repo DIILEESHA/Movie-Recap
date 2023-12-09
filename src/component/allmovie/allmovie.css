@@ -35,3 +35,35 @@
   height: 60vh;
   object-fit: cover;
 }
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  padding: 0;
+  margin-top: 50px;
+  width: 100%;
+
+  li {
+    margin: 0 5px;
+    display: inline-block;
+    cursor: pointer;
+
+    a {
+      padding: 10px;
+      text-decoration: none;
+      color: #333;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    &.active a {
+      background-color: #007bff;
+      color: #fff;
+    }
+
+    &:hover a {
+      background-color: #ddd;
+    }
+  }
+}
