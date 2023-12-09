@@ -1,30 +1,35 @@
 .trailor_container {
   background-color: var(--background-color);
-  padding: 30px 60px 30px 60px;
+  /* padding: 30px 60px 30px 60px; */
+  overflow: scroll;
   color: #fff;
+}
+
+.trailor_container h2{
+    padding: 20px 60px 0px 60px;
+
 }
 .bgClassName {
 }
 
 .trailor {
   height: 50vh;
-  padding: 20px 60px 10px 60px;
-
+  
   display: flex;
   align-items: center;
   gap: 25px;
-  justify-content: center;
-  overflow: scroll;
+  /* justify-content: center; */
   overflow-y: hidden;
   /* margin-bottom: 40px; */
 }
 
 .trailor {
+    padding: 0px 60px 0px 60px;
 }
 .trailer-card {
   /* height: 190px; */
   display: flex;
-  justify-content: flex-start;
+  /* justify-content: flex-start; */
 }
 .trailer-card button {
   border: none;

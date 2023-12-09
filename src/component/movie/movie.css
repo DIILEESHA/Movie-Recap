@@ -1,16 +1,19 @@
 .movie_container {
   color: #333;
   /* background-color: rgba(3, 37, 65);; */
+  overflow-x: scroll;
 
-  padding: 20px 60px;
 }
 .movie_container h2 {
-  margin-bottom: 20px;
+    margin-bottom: 20px;
+    padding: 20px 60px 0px 60px;
+
 }
 .movie-list {
+    padding: 0px 60px 0px 60px;
+
   display: flex;
   overflow-y: hidden;
-  overflow-x: scroll;
   gap: 20px;
 }
 .movie-card {
@@ -41,7 +44,7 @@
 }
 .dega {
   color: red;
-  width: 50px;
+  width: 40px;
   background-color: rgba(3, 37, 65);
   border-radius: 50%;
 }

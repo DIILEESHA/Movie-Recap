@@ -61,16 +61,16 @@ const Movie = ({ title, movies }) => {
   return (
     <div className="movie_container">
       <h2>{title}</h2>
-          <div className="movie-list">
-      {loading ? (
+      <div className="movie-list">
+        {loading ? (
           // Show skeleton loader for each card while loading
           Array.from({ length: 7 }).map((_, index) => (
             <div key={index} className="movie-card">
-              <SkeletonLoader1/>
+              <SkeletonLoader1 />
             </div>
           ))
         ) : (
-        <>
+          <>
             {/* <Slider style={{marginBottom:'30px'}}   {...settings}> */}
             {movies.map((movie) => (
               <div key={movie.id} className="movie-card">
@@ -85,7 +85,7 @@ const Movie = ({ title, movies }) => {
                     <CircularProgressbar
                       className="dega"
                       value={movie.vote_average * 10}
-                      text={`${movie.vote_average.toFixed(1)}%`}
+                      text={`${movie.vote_average.toFixed(1)}`}
                       styles={buildStyles({
                         width: "50px",
                         textColor: "#fff",
@@ -107,10 +107,9 @@ const Movie = ({ title, movies }) => {
                 </div>
               </div>
             ))}
-            </>
-      )}
-          </div>
-      
+          </>
+        )}
+      </div>
     </div>
   );
 };

@@ -5,6 +5,7 @@ import Home from "./component/home/Home";
 import Navbar from "./component/navbar/Navbar";
 import Trending from "./component/trending/Trending";
 import LatestTrailers from "./component/latest/LatestTrailers";
+import Footer from "./component/footer/Footer";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <Navbar />
       <Header />
       <Home />
+      <Footer />
     </div>
   );
 }
