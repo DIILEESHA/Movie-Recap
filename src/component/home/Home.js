@@ -4,6 +4,7 @@ import axios from "axios";
 import Movie from "../movie/Movie";
 import Trending from "../trending/Trending";
 import LatestTrailers from "../latest/LatestTrailers";
+import Header from "../Header/Header";
 
 const Home = () => {
   const [popularMovies, setPopularMovies] = useState([]);
@@ -13,12 +14,25 @@ const Home = () => {
 
   useEffect(() => {
     const fetchPopularMovies = async () => {
+      const totalPages = 100;
       // Fetch popular movies
       const apiKey = "f9d26affa6d3bd80057602fdde544c98";
-      const response = await axios.get(
-        `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=en-US&page=1`
+      const promises = Array.from({ length: totalPages }, (_, page) =>
+        axios.get(
+          `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=en-US&page=${
+            page + 1
+          }`
+        )
       );
-      setPopularMovies(response.data.results);
+
+      const responses = await Promise.all(promises);
+
+      const allPopularMovies = responses.reduce(
+        (accumulator, response) => accumulator.concat(response.data.results),
+        []
+      );
+
+      setPopularMovies(allPopularMovies);
     };
 
     const fetchTrendingMovies = async () => {
@@ -71,6 +85,7 @@ const Home = () => {
         color: "white", // Adjust text color for visibility
       }}
     >
+      <Header />
       <Movie title="Trending Movies" movies={trendingMovies} />
 
       <LatestTrailers />

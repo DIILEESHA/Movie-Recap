@@ -1,19 +1,21 @@
 import "./App.css";
-import Header from "./component/Header/Header";
-import Movie from "./component/movie/Movie";
 import Home from "./component/home/Home";
 import Navbar from "./component/navbar/Navbar";
-import Trending from "./component/trending/Trending";
-import LatestTrailers from "./component/latest/LatestTrailers";
 import Footer from "./component/footer/Footer";
+import { Routes, Route, BrowserRouter } from "react-router-dom";
+import Allmovie from "./component/allmovie/Allmovie";
 
 function App() {
   return (
     <div className="App">
-      <Navbar />
-      <Header />
-      <Home />
-      <Footer />
+      <BrowserRouter>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/movie" element={<Allmovie />} />
+        </Routes>
+        <Footer />
+      </BrowserRouter>
     </div>
   );
 }

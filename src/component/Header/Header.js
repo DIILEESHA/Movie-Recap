@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { TypeAnimation } from "react-type-animation";
 import "./header.css";
 
 const Header = () => {
@@ -28,7 +29,7 @@ const Header = () => {
       className="header_container"
       //   style={{ backgroundImage: `url(${backgroundImage})` }}
     >
-        <div className="jy"></div>
+      <div className="jy"></div>
       <div className="img_container">
         <img src={`${backgroundImage}`} alt="" />
         <div className="dk">
@@ -37,9 +38,13 @@ const Header = () => {
             <h2 className="welcome_note">
               Millions of movies, TV shows and people to discover. Explore now.
             </h2>
+           
 
             <div className="seach_content">
-              <input type="text" placeholder="Search for a Movie or Tv show..." />
+              <input
+                type="text"
+                placeholder="Search for a Movie or Tv show..."
+              />
 
               <div className="search_button">
                 <button>search</button>
