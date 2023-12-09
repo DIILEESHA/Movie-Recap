@@ -60,7 +60,7 @@ const Movie = ({ title, movies }) => {
 
   return (
     <div className="movie_container">
-      <h2>{title}</h2>
+      <h2 className="desire">{title}</h2>
       <div className="movie-list">
         {loading ? (
           // Show skeleton loader for each card while loading

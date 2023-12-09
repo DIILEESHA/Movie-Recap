@@ -8,10 +8,6 @@ import "react-dropdown/style.css";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import ReactPaginate from "react-paginate";
 
-// ... (imports)
-
-// ... (imports)
-
 const Allmovie = () => {
   const [movie, setMovie] = useState([]);
   const [genres, setGenres] = useState([]);
@@ -136,12 +132,8 @@ const Allmovie = () => {
         activeClassName={"active"}
         initialPage={0} // Set the initial page to 0
       />
-
-
     </div>
   );
 };
 
 export default Allmovie;
-
-

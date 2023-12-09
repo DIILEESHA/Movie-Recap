@@ -9,14 +9,28 @@ const Header = () => {
   useEffect(() => {
     const randomImg = async () => {
       const apiKey = "f9d26affa6d3bd80057602fdde544c98";
-      const response = await axios.get(
-        `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=en-US&page=1`
+      const totalPages = 10;
+
+      // Create an array of promises for each page
+      const promises = Array.from({ length: totalPages }, (_, page) =>
+        axios.get(
+          `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=en-US&page=${page + 1}`
+        )
       );
 
+      // Wait for all promises to resolve
+      const responses = await Promise.all(promises);
+
+      // Combine the results from all pages
+      const allMovies = responses.reduce(
+        (accumulator, response) => accumulator.concat(response.data.results),
+        []
+      );
+
+      // Select a random movie from the combined results
       const randomMovie =
-        response.data.results[
-          Math.floor(Math.random() * response.data.results.length)
-        ];
+        allMovies[Math.floor(Math.random() * allMovies.length)];
+
       setBackgroundImage(
         `https://image.tmdb.org/t/p/original/${randomMovie.backdrop_path}`
       );
@@ -38,7 +52,6 @@ const Header = () => {
             <h2 className="welcome_note">
               Millions of movies, TV shows and people to discover. Explore now.
             </h2>
-           
 
             <div className="seach_content">
               <input

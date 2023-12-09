@@ -74,7 +74,7 @@ const TvShows = () => {
   return (
     <div className="movies_container">
       <div className="movie_end">
-        <h2 className="movie_kit">explore movies</h2>
+        <h2 className="desire">explore movies</h2>
 
         <Dropdown
           className="dr"

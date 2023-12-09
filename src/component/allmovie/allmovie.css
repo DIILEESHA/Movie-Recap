@@ -7,7 +7,7 @@
   display: flex;
   justify-content: space-between;
   width: 100%;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   align-items: center;
 }
 
@@ -17,16 +17,23 @@
   z-index: 1;
 }
 
+.movie_kit {
+  text-transform: capitalize;
+  color: #333;
+}
+
 .moviekit_card {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  gap: 10px;
+  gap: 13px;
   cursor: pointer;
 }
 
 .movie_sub_card {
   padding: 5px;
-  border: 1px solid #f5f3f3;
+  border: 1px solid #f3f0f0;
+  border-radius: 5px;
+  box-shadow: 0 2px 8px rgba(0,0,0,.1);
 }
 .movie_sub_image {
   position: relative;
