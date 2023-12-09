@@ -3,8 +3,6 @@ import Home from "./component/home/Home";
 import Navbar from "./component/navbar/Navbar";
 import Footer from "./component/footer/Footer";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
-import Allmovie from "./component/allmovie/Allmovie";
-import TvShows from "./component/tvshow/TVShows";
 import ContentList from "./component/contentList/ContentList";
 import ContentDetails from "./component/contentDetails/ContentDetails ";
 
@@ -14,7 +12,7 @@ function App() {
       <BrowserRouter>
         <Navbar />
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Home contentType="movie"/>} />
           <Route
             path="/movie"
             element={<ContentList contentType="movie" titleProperty="title" />}
@@ -24,11 +22,7 @@ function App() {
             element={<ContentList contentType="tv" titleProperty="name" />}
           />
           {/* <Route exact path="/:contentType" component={ContentList} /> */}
-          <Route
-            exact
-            path="/:contentType/:contentId"
-            component={ContentDetails}
-          />
+          <Route path="/:contentType/:contentId" element={<ContentDetails />} />
         </Routes>
         <Footer />
       </BrowserRouter>

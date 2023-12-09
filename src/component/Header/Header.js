@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { TypeAnimation } from "react-type-animation";
 import "./header.css";
 
 const Header = () => {

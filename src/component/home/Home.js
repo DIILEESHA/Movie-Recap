@@ -1,8 +1,6 @@
-// Home.js
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Movie from "../movie/Movie";
-import Trending from "../trending/Trending";
 import LatestTrailers from "../latest/LatestTrailers";
 import Header from "../Header/Header";
 
@@ -78,20 +76,16 @@ const Home = () => {
     <div
       className="home-container"
       style={{
-        //   backgroundImage: `url(${backgroundImage})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
         minHeight: "100vh",
-        color: "white", // Adjust text color for visibility
+        color: "white", 
       }}
     >
       <Header />
-      <Movie title="Trending Movies" movies={trendingMovies} />
-
+      <Movie title="Trending Movies" movies={trendingMovies} contentType="movie" />
       <LatestTrailers />
-      <Movie title="Popular Movies" movies={popularMovies} />
-      {/* <Movie title="Latest Movies" movies={latestMovies} /> */}
-      {/* <Trending /> */}
+      <Movie title="Popular Movies" movies={popularMovies} contentType="movie" />
     </div>
   );
 };

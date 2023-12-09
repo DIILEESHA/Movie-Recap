@@ -87,8 +87,12 @@ const ContentList = ({ contentType, titleProperty }) => {
 
       <div className="moviekit_card">
         {content.map((contentItem) => (
-          <Link to={`/${contentType}/${contentItem.id}`} key={contentItem.id}>
-            <div className="movie_sub_card" key={contentItem.id}>
+          <Link
+            className="linka"
+            to={`/${contentType}/${contentItem.id}`}
+            key={contentItem.id}
+          >
+            <div className="movie_sub_card">
               <div className="movie_sub_image">
                 <img
                   src={`https://image.tmdb.org/t/p/w500/${contentItem.poster_path}`}
@@ -98,8 +102,8 @@ const ContentList = ({ contentType, titleProperty }) => {
                 <div className="fg">
                   <CircularProgressbar
                     className="dega"
-                    value={contentItem.vote_average * 10}
-                    text={`${contentItem.vote_average.toFixed(1)}`}
+                    value={contentItem?.vote_average * 10}
+                    text={`${contentItem?.vote_average?.toFixed(1)}`}
                     styles={buildStyles({
                       width: "50px",
                       textColor: "#fff",
