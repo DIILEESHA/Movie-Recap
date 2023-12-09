@@ -10,15 +10,31 @@ import ReactPaginate from "react-paginate";
 
 // ... (imports)
 
+// ... (imports)
+
 const Allmovie = () => {
-  const [movie, setTVShows] = useState([]);
+  const [movie, setMovie] = useState([]);
   const [genres, setGenres] = useState([]);
   const [selectedGenre, setSelectedGenre] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
 
   useEffect(() => {
-    const fetchTVShows = async () => {
+    const fetchGenres = async () => {
+      const apiKey = "f9d26affa6d3bd80057602fdde544c98";
+
+      const response = await axios.get(
+        `https://api.themoviedb.org/3/genre/movie/list?api_key=${apiKey}&language=en-US`
+      );
+
+      setGenres(response.data.genres);
+    };
+
+    fetchGenres();
+  }, []);
+
+  useEffect(() => {
+    const fetchMovies = async () => {
       const apiKey = "f9d26affa6d3bd80057602fdde544c98";
 
       let url = `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=en-US&page=${currentPage}`;
@@ -34,11 +50,11 @@ const Allmovie = () => {
 
       const response = await axios.get(url);
 
-      setTVShows(response.data.results);
+      setMovie(response.data.results);
       setTotalPages(response.data.total_pages);
     };
 
-    fetchTVShows();
+    fetchMovies();
   }, [selectedGenre, genres, currentPage]);
 
   const handleGenreChange = (selected) => {
@@ -74,19 +90,19 @@ const Allmovie = () => {
       </div>
 
       <div className="moviekit_card">
-        {movie.map((tvShow) => (
-          <div className="movie_sub_card" key={tvShow.id}>
+        {movie.map((movieItem) => (
+          <div className="movie_sub_card" key={movieItem.id}>
             <div className="movie_sub_image">
               <img
-                src={`https://image.tmdb.org/t/p/w500/${tvShow.poster_path}`}
+                src={`https://image.tmdb.org/t/p/w500/${movieItem.poster_path}`}
                 alt=""
               />
 
               <div className="fg">
                 <CircularProgressbar
                   className="dega"
-                  value={tvShow.vote_average * 10}
-                  text={`${tvShow.vote_average.toFixed(1)}`}
+                  value={movieItem.vote_average * 10}
+                  text={`${movieItem.vote_average.toFixed(1)}`}
                   styles={buildStyles({
                     width: "50px",
                     textColor: "#fff",
@@ -98,11 +114,11 @@ const Allmovie = () => {
             </div>
             <div className="sub-card">
               <h3 className="movie_title">
-                {tvShow?.title.slice(0, 15)}
+                {movieItem?.title.slice(0, 15)}
                 {"..."}
               </h3>
               <h5 className="date">
-                {dayjs(tvShow.release_date).format("MMMM D, YYYY")}
+                {dayjs(movieItem.release_date).format("MMMM D, YYYY")}
               </h5>
             </div>
           </div>
@@ -127,4 +143,5 @@ const Allmovie = () => {
 };
 
 export default Allmovie;
+
 
