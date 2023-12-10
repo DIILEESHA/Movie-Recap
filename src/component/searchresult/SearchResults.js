@@ -38,10 +38,18 @@ const SearchResults = ({ results, titleProperty }) => {
           >
             <div className="movie_sub_card">
               <div className="movie_sub_image">
-                <img
-                  src={`https://image.tmdb.org/t/p/w500/${result.poster_path}`}
-                  alt=""
-                />
+                {result.poster_path ? (
+                  <img
+                    src={`https://image.tmdb.org/t/p/w500/${result.poster_path}`}
+                    alt=""
+                  />
+                ) : (
+                  <img
+                    src="https://ehelperteam.com/wp-content/uploads/2019/09/Broken-images.png"
+                    alt="Default Image"
+                    style={{ opacity: "0.6" }}
+                  />
+                )}
               </div>
               <div
                 className="sub-card"

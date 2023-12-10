@@ -129,17 +129,33 @@ const ContentDetails = () => {
         <>
           <div className="top_main">
             <div className="hj">
-              <img
-                src={`https://image.tmdb.org/t/p/w500/${contentDetails?.poster_path}`}
-                alt={contentDetails?.title || contentDetails?.name}
-              />
+              {contentDetails?.poster_path ? (
+                <img
+                  src={`https://image.tmdb.org/t/p/w500/${contentDetails?.poster_path}`}
+                  alt={contentDetails?.title || contentDetails?.name}
+                />
+              ) : (
+                <img
+                  src="https://ehelperteam.com/wp-content/uploads/2019/09/Broken-images.png"
+                  alt={contentDetails?.title || contentDetails?.name}
+                />
+              )}
 
               <div className="main_content">
                 <div className="content_left">
-                  <img
-                    src={`https://image.tmdb.org/t/p/w500/${contentDetails.poster_path}`}
-                    alt={contentDetails.title || contentDetails.name}
-                  />
+                {contentDetails?.poster_path ? (
+                <img
+                  src={`https://image.tmdb.org/t/p/w500/${contentDetails?.poster_path}`}
+                  alt={contentDetails?.title || contentDetails?.name}
+                />
+              ) : (
+                <img
+                  src="https://ehelperteam.com/wp-content/uploads/2019/09/Broken-images.png"
+                  alt={contentDetails?.title || contentDetails?.name}
+
+                  style={{opacity:'0.6'}}
+                />
+              )}
                 </div>
                 <div className="content_right">
                   <h1 className="contenth1">
