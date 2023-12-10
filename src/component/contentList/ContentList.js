@@ -136,7 +136,7 @@ const ContentList = ({ contentType, titleProperty }) => {
         onPageChange={handlePageClick}
         containerClassName={"pagination"}
         activeClassName={"active"}
-        initialPage={0} // Set the initial page to 0
+        initialPage={0}
       />
     </div>
   );
