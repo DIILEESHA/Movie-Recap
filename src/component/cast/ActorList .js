@@ -1,10 +1,11 @@
 // ActorList.js
 import React from "react";
+import './actor.css'
 
-const ActorList = ({ cast }) => {
+const ActorList = ({ cast,name }) => {
   return (
     <div className="actor-list">
-      <h3>Top Cast</h3>
+      <h3 className="actor ">Top Cast</h3>
       <ul>
         {cast.map((actor) => (
           <li key={actor.id}>

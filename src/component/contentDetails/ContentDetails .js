@@ -11,6 +11,8 @@ import "./content.css";
 import useLoading from "../useloader/useLoading ";
 import ReactPlayer from "react-player";
 
+// ... (your imports)
+
 const ContentDetails = () => {
   const { contentId, contentType } = useParams();
   const [contentDetails, setContentDetails] = useState(null);
@@ -18,30 +20,25 @@ const ContentDetails = () => {
   const [director, setDirector] = useState("");
   const [trailerKey, setTrailerKey] = useState(null);
   const [modalOpen, setModalOpen] = useState(false);
-  console.log('Rendering PlayButton');
+  const [status, setStatus] = useState("");
   const loading = useLoading();
-
   const [backgroundImage, setBackgroundImage] = useState("");
 
   useEffect(() => {
-    const randomImg = async () => {
+    const fetchData = async () => {
       const apiKey = "f9d26affa6d3bd80057602fdde544c98";
 
-      // Fetch content details
       const response = await axios.get(
         `https://api.themoviedb.org/3/${contentType}/${contentId}?api_key=${apiKey}&language=en-US&append_to_response=credits`
       );
 
-      // Set content details
       setContentDetails(response.data);
-
-      // Set background image
       setBackgroundImage(
         `https://image.tmdb.org/t/p/w500/${response.data.poster_path}`
       );
     };
 
-    randomImg();
+    fetchData();
   }, [contentId, contentType]);
 
   useEffect(() => {
@@ -71,7 +68,7 @@ const ContentDetails = () => {
         response.data.credits.cast &&
         response.data.credits.cast.length > 0
       ) {
-        setCast(response.data.credits.cast.slice(0, 5));
+        setCast(response.data.credits.cast.slice(0, 30));
       }
 
       // Fetch trailers separately for movies and TV shows
@@ -87,6 +84,18 @@ const ContentDetails = () => {
         ) {
           setTrailerKey(videoResponse.data.results[0].key);
         }
+      }
+
+      // Determine content status
+      if (response.data.release_date || response.data.first_air_date) {
+        const releaseDate = new Date(
+          response.data.release_date || response.data.first_air_date
+        );
+        const currentDate = new Date();
+
+        setStatus(releaseDate <= currentDate ? "Released" : "Not Released");
+      } else {
+        setStatus("Release date not available");
       }
     };
 
@@ -136,85 +145,131 @@ const ContentDetails = () => {
                   <h1 className="contenth1">
                     {contentDetails.title || contentDetails.name}
                   </h1>
-                  <p>
-                    Released Date:{" "}
-                    {contentDetails.release_date ||
-                      contentDetails.first_air_date}
-                  </p>
 
                   <div className="show_trailor_option">
-                    {trailerKey && (
-                      <div>
-                        <a href="https://cdnl.iconscout.com/lottie/free/thumb/free-youtube-logo-4396402-3645718.mp4"></a>
-                        <div style={{color:'red',zIndex:'1'}} className="playbtn" onClick={openModal}>
-                          <svg
-                            version="1.1"
-                            xmlns="http://www.w3.org/2000/svg"
-                            xmlnsXlink="http://www.w3.org/1999/xlink"
-                            x="0px"
-                            y="0px"
-                            width="80px"
-                            height="80px"
-                            viewBox="0 0 213.7 213.7"
-                            enableBackground="new 0 0 213.7 213.7"
-                            xmlSpace="preserve"
-                          >
-                            <polygon
-                              className="triangle"
-                              fill="none"
-                              strokeWidth="7"
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeMiterlimit="10"
-                              points="73.5,62.5 148.5,105.8 73.5,149.1"
-                            ></polygon>
-                            <circle
-                              className="circle"
-                              fill="none"
-                              strokeWidth="7"
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeMiterlimit="10"
-                              cx="106.8"
-                              cy="106.8"
-                              r="103.3"
-                            ></circle>
-                          </svg>
-                          <span className="text">Watch Trailer</span>
-                        </div>
-                      </div>
-                    )}
-
                     <div className="fgr">
                       <CircularProgressbar
-                        className="dega"
+                        className="degar"
                         value={contentDetails.vote_average * 10}
                         text={`${contentDetails.vote_average.toFixed(1)}`}
                         styles={buildStyles({
                           width: "50px",
                           textColor: "#fff",
-                          trailColor: "#d6d6d6",
+                          trailColor: "rgba(0,0,0,0.4)",
                           textSize: "30px",
                         })}
                       />
                     </div>
+
+                    {trailerKey && (
+                      <div className="trailord" onClick={openModal}>
+                        <svg
+                          version="1.1"
+                          className="dh"
+                          id="play"
+                          xmlns="http://www.w3.org/2000/svg"
+                          xmlnsXlink="http://www.w3.org/1999/xlink"
+                          x="0px"
+                          y="0px"
+                          // height="70px"
+                          // width="70px"
+                          viewBox="0 0 100 100"
+                          enableBackground="new 0 0 100 100"
+                          xmlSpace="preserve"
+                        >
+                          <path
+                            className="stroke-solid"
+                            fill="none"
+                            stroke="white"
+                            d="M49.9,2.5C23.6,2.8,2.1,24.4,2.5,50.4C2.9,76.5,24.7,98,50.3,97.5c26.4-0.6,47.4-21.8,47.2-47.7
+                              C97.3,23.7,75.7,2.3,49.9,2.5"
+                          />
+                          <path
+                            className="stroke-dotted"
+                            fill="none"
+                            stroke="white"
+                            d="M49.9,2.5C23.6,2.8,2.1,24.4,2.5,50.4C2.9,76.5,24.7,98,50.3,97.5c26.4-0.6,47.4-21.8,47.2-47.7
+                                C97.3,23.7,75.7,2.3,49.9,2.5"
+                          />
+                          <path
+                            className="icon"
+                            fill="white"
+                            d="M38,69c-1,0.5-1.8,0-1.8-1.1V32.1c0-1.1,0.8-1.6,1.8-1.1l34,18c1,0.5,1,1.4,0,1.9L38,69z"
+                          />
+                        </svg>
+
+                        <span className="text">Watch Trailer</span>
+                      </div>
+                    )}
                   </div>
 
-                  <p>Runtime: {contentDetails.runtime} minutes</p>
-                  <p>Overview: {contentDetails.overview}</p>
+                  <div className="overviewer">
+                    <h2 className="overview">overview</h2>
+                    <p className="overview_para">{contentDetails.overview}</p>
+                  </div>
+
+                  <div className="status_view">
+                    <p className="paras">
+                      Status:
+                      <h3 className="str">{status}</h3>
+                    </p>
+                  </div>
+                  <div className="liner"></div>
+                  <p className="paras">
+                    Released Date:{" "}
+                    <h3 className="str">
+                      {contentDetails.release_date ||
+                        contentDetails.first_air_date}
+                    </h3>
+                  </p>
+                  <div className="liner"></div>
+                  {contentType === "movie" && (
+                    <>
+                      <p className="paras">
+                        Runtime:
+                        <h3 className="str">
+                          {contentDetails.runtime}
+                          minutes
+                        </h3>
+                      </p>
+                      <div className="liner"></div>
+                    </>
+                  )}
+
+                  {contentType === "tv" && (
+                    <>
+                      <p className="paras">
+                        Number of Seasons:
+                        <h3 className="str">
+                          {contentDetails.number_of_seasons}
+                        </h3>
+                      </p>
+                      <div className="liner"></div>
+
+                      <p className="paras">
+                        Number of Episodes:
+                        <h3 className="str">
+                          {contentDetails.number_of_episodes}
+                        </h3>
+                      </p>
+                      <div className="liner"></div>
+                    </>
+                  )}
+
+                  {contentType === "movie" && (
+                    <>
+                      <p className="paras">
+                        Director: <h3 className="str">{director}</h3>
+                      </p>
+                      <div className="liner"></div>
+                    </>
+                  )}
                 </div>
               </div>
             </div>
           </div>
           <div className="bottom">
             <ActorList cast={cast} />
-            <p>Director: {director}</p>
-            {contentType === "tv" && (
-              <>
-                <p>Number of Seasons: {contentDetails.number_of_seasons}</p>
-                <p>Number of Episodes: {contentDetails.number_of_episodes}</p>
-              </>
-            )}
 
             {modalOpen && trailerKey && (
               <div className="modal">
