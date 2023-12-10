@@ -1,5 +1,14 @@
 .movies_container {
   padding: 40px 60px;
+  color: #ffff;
+  background: linear-gradient(
+    180deg,
+    rgba(4, 21, 45, 0) -650%,
+    rgb(1, 12, 20) 90.17%
+  );
+
+  /* background: linear-gradient(280deg, rgba(1, 18, 43, 0) 0%, #01122b 79.17%); */
+
   height: auto;
 }
 
@@ -11,15 +20,31 @@
   align-items: center;
 }
 
-.dr {
+.my-dropdown-menu {
   width: 240px;
   border-radius: 10px;
+  /* background-color: #007bff; */
+  color: #fff;
+ background-color: #ddd;
+ border-bottom-left-radius: 10px;
+ border-bottom-right-radius: 10px;
+ border-top-right-radius: 0;
+ border-top-left-radius: 0;
+
+  /* background-color: ; */
   z-index: 1;
+}
+
+.my-dropdown-control {
+  width: 240px;
+border-radius: 5px;
+color: #fff;
+  background-color: rgba(4, 21, 45, 0);
 }
 
 .movie_kit {
   text-transform: capitalize;
-  color: #333;
+  color: #ddd;
 }
 
 .moviekit_card {
@@ -31,9 +56,9 @@
 
 .movie_sub_card {
   padding: 5px;
-  border: 1px solid #f3f0f0;
+  /* border: 1px solid #333; */
   border-radius: 5px;
-  box-shadow: 0 2px 8px rgba(0,0,0,.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 .movie_sub_image {
   position: relative;

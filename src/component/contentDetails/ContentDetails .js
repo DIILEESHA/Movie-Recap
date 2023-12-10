@@ -11,8 +11,6 @@ import "./content.css";
 import useLoading from "../useloader/useLoading ";
 import ReactPlayer from "react-player";
 
-
-
 const ContentDetails = () => {
   const { contentId, contentType } = useParams();
   const [contentDetails, setContentDetails] = useState(null);
@@ -20,8 +18,31 @@ const ContentDetails = () => {
   const [director, setDirector] = useState("");
   const [trailerKey, setTrailerKey] = useState(null);
   const [modalOpen, setModalOpen] = useState(false);
-
+  console.log('Rendering PlayButton');
   const loading = useLoading();
+
+  const [backgroundImage, setBackgroundImage] = useState("");
+
+  useEffect(() => {
+    const randomImg = async () => {
+      const apiKey = "f9d26affa6d3bd80057602fdde544c98";
+
+      // Fetch content details
+      const response = await axios.get(
+        `https://api.themoviedb.org/3/${contentType}/${contentId}?api_key=${apiKey}&language=en-US&append_to_response=credits`
+      );
+
+      // Set content details
+      setContentDetails(response.data);
+
+      // Set background image
+      setBackgroundImage(
+        `https://image.tmdb.org/t/p/w500/${response.data.poster_path}`
+      );
+    };
+
+    randomImg();
+  }, [contentId, contentType]);
 
   useEffect(() => {
     const fetchContentDetails = async () => {
@@ -81,7 +102,7 @@ const ContentDetails = () => {
   };
 
   return (
-    <div>
+    <div className="contentdetail_container">
       {loading && (
         <div
           style={{
@@ -95,63 +116,121 @@ const ContentDetails = () => {
         </div>
       )}
 
-      {!loading && (
+      {!loading && contentDetails && (
         <>
-          <h1>{contentDetails.title || contentDetails.name}</h1>
-          <img
-            src={`https://image.tmdb.org/t/p/w500/${contentDetails.poster_path}`}
-            alt={contentDetails.title || contentDetails.name}
-          />
-          <p>
-            Released Date:{" "}
-            {contentDetails.release_date || contentDetails.first_air_date}
-          </p>
-          <p>Director: {director}</p>
-          <ActorList cast={cast} />
-          <p>Runtime: {contentDetails.runtime} minutes</p>
+          <div className="top_main">
+            <div className="hj">
+              <img
+                src={`https://image.tmdb.org/t/p/w500/${contentDetails?.poster_path}`}
+                alt={contentDetails?.title || contentDetails?.name}
+              />
 
-          <div className="fgr">
-            <CircularProgressbar
-              className="dega"
-              value={contentDetails.vote_average * 10}
-              text={`${contentDetails.vote_average.toFixed(1)}`}
-              styles={buildStyles({
-                width: "50px",
-                textColor: "#fff",
-                trailColor: "#d6d6d6",
-                textSize: "30px",
-              })}
-            />
-          </div>
-          <p>Overview: {contentDetails.overview}</p>
+              <div className="main_content">
+                <div className="content_left">
+                  <img
+                    src={`https://image.tmdb.org/t/p/w500/${contentDetails.poster_path}`}
+                    alt={contentDetails.title || contentDetails.name}
+                  />
+                </div>
+                <div className="content_right">
+                  <h1 className="contenth1">
+                    {contentDetails.title || contentDetails.name}
+                  </h1>
+                  <p>
+                    Released Date:{" "}
+                    {contentDetails.release_date ||
+                      contentDetails.first_air_date}
+                  </p>
 
-          {contentType === "tv" && (
-            <>
-              <p>Number of Seasons: {contentDetails.number_of_seasons}</p>
-              <p>Number of Episodes: {contentDetails.number_of_episodes}</p>
-            </>
-          )}
+                  <div className="show_trailor_option">
+                    {trailerKey && (
+                      <div>
+                        <a href="https://cdnl.iconscout.com/lottie/free/thumb/free-youtube-logo-4396402-3645718.mp4"></a>
+                        <div style={{color:'red',zIndex:'1'}} className="playbtn" onClick={openModal}>
+                          <svg
+                            version="1.1"
+                            xmlns="http://www.w3.org/2000/svg"
+                            xmlnsXlink="http://www.w3.org/1999/xlink"
+                            x="0px"
+                            y="0px"
+                            width="80px"
+                            height="80px"
+                            viewBox="0 0 213.7 213.7"
+                            enableBackground="new 0 0 213.7 213.7"
+                            xmlSpace="preserve"
+                          >
+                            <polygon
+                              className="triangle"
+                              fill="none"
+                              strokeWidth="7"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeMiterlimit="10"
+                              points="73.5,62.5 148.5,105.8 73.5,149.1"
+                            ></polygon>
+                            <circle
+                              className="circle"
+                              fill="none"
+                              strokeWidth="7"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeMiterlimit="10"
+                              cx="106.8"
+                              cy="106.8"
+                              r="103.3"
+                            ></circle>
+                          </svg>
+                          <span className="text">Watch Trailer</span>
+                        </div>
+                      </div>
+                    )}
 
-          {trailerKey && (
-            <div>
-              <button onClick={openModal}>Play Trailer</button>
-            </div>
-          )}
+                    <div className="fgr">
+                      <CircularProgressbar
+                        className="dega"
+                        value={contentDetails.vote_average * 10}
+                        text={`${contentDetails.vote_average.toFixed(1)}`}
+                        styles={buildStyles({
+                          width: "50px",
+                          textColor: "#fff",
+                          trailColor: "#d6d6d6",
+                          textSize: "30px",
+                        })}
+                      />
+                    </div>
+                  </div>
 
-          {modalOpen && trailerKey && (
-            <div className="modal">
-              <div className="modal-content">
-                <span className="close" onClick={closeModal}>
-                  &times;
-                </span>
-                <ReactPlayer
-                  url={`https://www.youtube.com/watch?v=${trailerKey}`}
-                  controls
-                  width="100%"
-                />
+                  <p>Runtime: {contentDetails.runtime} minutes</p>
+                  <p>Overview: {contentDetails.overview}</p>
+                </div>
               </div>
             </div>
-          )}
+          </div>
+          <div className="bottom">
+            <ActorList cast={cast} />
+            <p>Director: {director}</p>
+            {contentType === "tv" && (
+              <>
+                <p>Number of Seasons: {contentDetails.number_of_seasons}</p>
+                <p>Number of Episodes: {contentDetails.number_of_episodes}</p>
+              </>
+            )}
+
+            {modalOpen && trailerKey && (
+              <div className="modal">
+                <div className="modal-content">
+                  <span className="close" onClick={closeModal}>
+                    &times;
+                  </span>
+                  <ReactPlayer
+                    url={`https://www.youtube.com/watch?v=${trailerKey}`}
+                    controls
+                    width="100%"
+                  />
+                </div>
+              </div>
+            )}
+          </div>
         </>
       )}
     </div>
@@ -159,4 +238,3 @@ const ContentDetails = () => {
 };
 
 export default ContentDetails;
-

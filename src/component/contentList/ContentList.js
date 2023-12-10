@@ -74,6 +74,9 @@ const ContentList = ({ contentType, titleProperty }) => {
         <h2 className="desire">explore {contentType}</h2>
 
         <Dropdown
+          controlClassName="my-dropdown-control"
+          menuClassName="my-dropdown-menu"
+          // styles={customStyles}
           className="dr"
           options={genres.map((genre) => ({
             value: genre.name,

@@ -11,6 +11,7 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Navbar />
+       
         <Routes>
           <Route path="/" element={<Home contentType="movie"/>} />
           <Route

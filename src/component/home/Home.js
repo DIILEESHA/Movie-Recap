@@ -3,6 +3,7 @@ import axios from "axios";
 import Movie from "../movie/Movie";
 import LatestTrailers from "../latest/LatestTrailers";
 import Header from "../Header/Header";
+import ContentDetails from "../contentDetails/ContentDetails ";
 
 const Home = () => {
   const [popularMovies, setPopularMovies] = useState([]);

@@ -22,6 +22,10 @@ const Movie = ({ title, movies, contentType }) => {
 
   return (
     <div className="movie_container">
+
+
+
+      
       <h2 className="desire">{title}</h2>
       <div className="movie-list">
         {loading ? (

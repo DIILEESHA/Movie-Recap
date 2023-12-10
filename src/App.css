@@ -21,12 +21,7 @@
 
 /* Define the scrollbar handle (thumb) */
 ::-webkit-scrollbar-thumb {
-  background-color: rgba(
-    0,
-    0,
-    0,
-    0.2
-  ); /* Set the color of the scrollbar handle */
+  background-color: rgba(156, 154, 154, 0.4); /* Set the color of the scrollbar handle */
   border-radius: 50px; /* Set the radius of the scrollbar handle */
   /* opacity: .3; */
 }

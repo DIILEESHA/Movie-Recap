@@ -1,12 +1,19 @@
 .movie_container {
-  color: #333;
+  color: #ddd;
   /* background-color: rgba(3, 37, 65);; */
   overflow-x: scroll;
+  background: linear-gradient(180deg, rgba(4, 21, 45, 0) 12%, rgb(1, 12, 20) 90.17%);
+  /* background: linear-gradient(180deg,rgb(1, 12, 17) 79.17%, #1f1e1e 90%); */
+  /* background: linear-gradient(180deg, #1f1e1e 90%, rgb(1, 12, 17) 79.17%); */
+
+
+
 
 }
 .desire {
     margin-bottom: 20px;
     padding: 20px 60px 0px 60px;
+    color: #333;
 
 }
 .movie-list {
