@@ -71,7 +71,7 @@ const ContentList = ({ contentType, titleProperty }) => {
   return (
     <div className="movies_container">
       <div className="movie_end">
-        <h2 className="desire">explore {contentType}</h2>
+        <h2 className="desire2">explore {contentType}</h2>
 
         <Dropdown
           controlClassName="my-dropdown-control"

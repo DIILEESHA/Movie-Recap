@@ -5,15 +5,17 @@ import Footer from "./component/footer/Footer";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import ContentList from "./component/contentList/ContentList";
 import ContentDetails from "./component/contentDetails/ContentDetails ";
+import SearchPage from "./component/serachPage/SearchPage";
 
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
         <Navbar />
-       
+
         <Routes>
-          <Route path="/" element={<Home contentType="movie"/>} />
+        <Route path="/search" element={<SearchPage />} />
+          <Route path="/" element={<Home contentType="movie" />} />
           <Route
             path="/movie"
             element={<ContentList contentType="movie" titleProperty="title" />}

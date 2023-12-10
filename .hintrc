@@ -8,7 +8,8 @@
       {
         "ignore": [
           "scroll-behavior",
-          "position: sticky"
+          "position: sticky",
+          "width: fit-content"
         ]
       }
     ]
