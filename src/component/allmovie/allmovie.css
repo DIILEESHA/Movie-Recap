@@ -88,11 +88,15 @@
   font-size: 16px;
 }
 
+
+
 .pagination {
   display: flex;
   justify-content: end;
   list-style: none;
   padding: 0;
+  /* overflow: scroll; */
+  width: 100%;
   margin-top: 30px;
 }
 
@@ -100,6 +104,7 @@
   margin: 0 5px;
   display: inline-block;
   cursor: pointer;
+  
 }
 
 .pagination li a {

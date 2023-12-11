@@ -129,6 +129,9 @@ const ContentList = ({ contentType, titleProperty }) => {
           </Link>
         ))}
       </div>
+
+      <div className="handler">
+
       <ReactPaginate
         previousLabel={"Previous"}
         nextLabel={"Next"}
@@ -141,6 +144,7 @@ const ContentList = ({ contentType, titleProperty }) => {
         activeClassName={"active"}
         initialPage={0}
       />
+        </div>
     </div>
   );
 };
