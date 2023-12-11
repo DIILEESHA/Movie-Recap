@@ -1,11 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import "./nav.css";
 import { IoMdSearch } from "react-icons/io";
+import { RxHamburgerMenu } from "react-icons/rx";
 
 import { SiThemoviedatabase } from "react-icons/si";
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
+  const [menu, setMenu] = useState(false);
+
   return (
     <div className="nav_container">
       <div className="nav_left">
@@ -35,7 +38,35 @@ const Navbar = () => {
           <li>
             <IoMdSearch className="duca" />
           </li>
+
+          <div className="hamburger" onClick={() => setMenu(!menu)}>
+            <RxHamburgerMenu />
+          </div>
+
         </div>
+
+        <div className="mobile_back">
+          <div
+            className="mobile_menu gfs"
+            style={{ right: menu ? "0px" : "-50000vw" }}
+          >
+            <ul className="nav_mobile_ul">
+              <li className="nav_mobile_li" onClick={() => setMenu(!menu)}>
+                <Link className="linka" to="/movie">
+                  movies
+                </Link>
+              </li>
+                <div className="liner1"></div>
+              <li className="nav_mobile_li" onClick={() => setMenu(!menu)}>
+                <Link className="linka" to="/tv-shows">
+                  TV Shows
+                </Link>
+              </li>
+              <div className="liner1"></div>
+
+            </ul>
+          </div>
+          </div>
       </div>
     </div>
   );

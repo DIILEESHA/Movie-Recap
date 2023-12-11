@@ -42,3 +42,27 @@
   font-size: 44px;
   /* background-color: rgb(28, 29, 29); */
 }
+
+@media screen and (max-width: 541px) {
+  .footer_ul > li {
+    font-size: 14px;
+  }
+  .footer_container {
+    padding: 30px 20px;
+  }
+  .footer_container p {
+    width: 100%;
+    text-align: justify;
+    font-size: 14px;
+  }
+  .icon_set .ist {
+    font-size: 37px;
+  }
+}
+
+@media screen and (max-width: 413px) {
+  .footer_ul {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

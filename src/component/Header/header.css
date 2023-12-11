@@ -2,24 +2,29 @@
   height: 48vh;
   width: 100%;
   position: relative;
-  
-  
 }
 
 .img_container img {
   height: 48vh;
   width: 100%;
   object-fit: cover;
-  background: linear-gradient(180deg, rgba(4, 21, 45, 0) 12%, rgb(1, 12, 20) 90.17%);
+  background: linear-gradient(
+    180deg,
+    rgba(4, 21, 45, 0) 12%,
+    rgb(1, 12, 20) 90.17%
+  );
   /* background: linear-gradient(180deg,rgba(4,21,45,0) 0%,#04152d 79.17%); */
-
 }
 .img_container {
   position: relative;
   /* background: linear-gradient(180deg,rgba(4,21,45,0) 0%,#04152d 79.17%); */
-  background: linear-gradient(180deg, rgba(4, 21, 45, 0) 12%, rgb(1, 12, 20) 90.17%);
+  background: linear-gradient(
+    180deg,
+    rgba(4, 21, 45, 0) 12%,
+    rgb(1, 12, 20) 90.17%
+  );
 
-
+  /* display: none; */
   height: 48vh;
   width: 100%;
 }
@@ -87,6 +92,8 @@
 .search_button button {
   padding: 15px;
   border-radius: 100px;
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
   border: none;
   display: flex;
   align-items: center;
@@ -103,3 +110,40 @@
   background: linear-gradient(to right, #f5af19, #f12711);
   font-family: "Roboto", sans-serif;
 }
+@media screen and (max-width: 1143px) {
+  .dk {
+    padding: 0px 20px;
+  }
+}
+
+@media screen and (max-width: 942px) {
+  .welcome {
+    font-size: 40px;
+  }
+  .welcome_note {
+    font-size: 25px;
+    margin-bottom: 15px;
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 542px) {
+  .welcome {
+    font-size: 30px;
+    margin-bottom: 5px;
+  }
+  .welcome_note {
+    font-size: 19px;
+    margin-bottom: 15px;
+    width: 100%;
+  }
+
+  .seach_content input::placeholder {
+    font-family: "Roboto", sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    /* text-transform: capitalize; */
+    /* color: #333; */
+  }
+}
+

@@ -84,37 +84,100 @@
   /* width: 50px; */
 }
 
+.content_title {
+  font-size: 16px;
+}
+
 .pagination {
   display: flex;
   justify-content: end;
   list-style: none;
   padding: 0;
-  /* justify-content: space-around; */
   margin-top: 30px;
-  /* width: 100%; */
+}
 
-  li {
-    margin: 0 5px;
-    display: inline-block;
-    display: flex;
-    cursor: pointer;
+.pagination li {
+  margin: 0 5px;
+  display: inline-block;
+  cursor: pointer;
+}
 
-    a {
-      padding: 10px;
-      text-decoration: none;
-      color: #ddd;
-      font-size: 16px;
-      border: 1px solid #575454;
-      border-radius: 3px;
-    }
+.pagination li a {
+  padding: 10px;
+  text-decoration: none;
+  color: #ddd;
+  font-size: 16px;
+  border: 1px solid #575454;
+  border-radius: 3px;
+}
 
-    &.active a {
-      background: linear-gradient(to right, #f5af19, #f12711);
-      color: #fff;
-    }
+.pagination li.active a {
+  background: linear-gradient(to right, #f5af19, #f12711);
+  color: #fff;
+}
 
-    &:hover a {
-      background-color: #007bff;
-    }
+.pagination li:hover a {
+  background-color: #007bff;
+}
+
+@media screen and (max-width: 1143px) {
+  .movies_container {
+    padding: 40px 20px;
+  }
+}
+
+@media screen and (max-width: 967px) {
+  .moviekit_card {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+@media screen and (max-width: 785px) {
+  .moviekit_card {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .desire2 {
+    font-size: 20px;
+  }
+  .my-dropdown-control {
+    font-size: 15px;
+  }
+}
+
+@media screen and (max-width: 635px) {
+  .movie_sub_image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+}
+
+@media screen and (max-width: 587px) {
+  .moviekit_card {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .pagination ul {
+  }
+  .pagination {
+  }
+}
+@media screen and (max-width: 488px) {
+  .movie_end {
+    flex-direction: column;
+    gap: 10px;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+  .pagination li a {
+    font-size: 14px;
+  }
+}
+@media screen and (max-width: 378px) {
+  .pagination {
+    justify-content: center;
+  }
+  .pagination li a {
+    font-size: 12px;
   }
 }

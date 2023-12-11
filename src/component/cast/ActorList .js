@@ -6,7 +6,7 @@ const ActorList = ({ cast, name }) => {
   return (
     <div className="actor-list">
       <h3 className="actor ">Top Cast</h3>
-      <ul>
+      <ul className="actor_ul">
         {cast.map((actor) => (
           <li key={actor.id}>
             {actor.profile_path ? (
