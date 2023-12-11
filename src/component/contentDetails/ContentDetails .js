@@ -130,7 +130,7 @@ const ContentDetails = () => {
           <div className="top_main">
             <div className="hj">
               {contentDetails?.poster_path ? (
-                <img
+                <img className="classic"
                   src={`https://image.tmdb.org/t/p/w500/${contentDetails?.poster_path}`}
                   alt={contentDetails?.title || contentDetails?.name}
                 />
@@ -286,7 +286,6 @@ const ContentDetails = () => {
           </div>
           <div className="bottom">
             <ActorList cast={cast} />
-
             {modalOpen && trailerKey && (
               <div className="modal">
                 <div className="modal-content">

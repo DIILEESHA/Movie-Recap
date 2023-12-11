@@ -21,6 +21,8 @@
   height: 200px;
   width: 200px;
   border-radius: 50%;
+opacity: 80%;
+
   object-fit: cover;
   border: 2px solid #333;
 }
@@ -30,4 +32,11 @@
   font-weight: 700;
   margin-top: 10px;
   margin-bottom: 20px;
+}
+
+@media screen and (max-width:620px){
+  .actor_ul > li > img{
+    height: 160px;
+  width: 160px;
+  }
 }
