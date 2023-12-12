@@ -114,14 +114,16 @@ const ContentDetails = () => {
     <div className="contentdetail_container">
       {loading && (
         <div
+          className="assigner"
           style={{
             height: "100vh",
             display: "flex",
             justifyContent: "center",
+            background: "",
             alignItems: "center",
           }}
         >
-          <ClipLoader size={100} />
+          <ClipLoader color="white" size={100} />
         </div>
       )}
 
@@ -130,7 +132,8 @@ const ContentDetails = () => {
           <div className="top_main">
             <div className="hj">
               {contentDetails?.poster_path ? (
-                <img className="classic"
+                <img
+                  className="classic"
                   src={`https://image.tmdb.org/t/p/w500/${contentDetails?.poster_path}`}
                   alt={contentDetails?.title || contentDetails?.name}
                 />
@@ -143,19 +146,18 @@ const ContentDetails = () => {
 
               <div className="main_content">
                 <div className="content_left">
-                {contentDetails?.poster_path ? (
-                <img
-                  src={`https://image.tmdb.org/t/p/w500/${contentDetails?.poster_path}`}
-                  alt={contentDetails?.title || contentDetails?.name}
-                />
-              ) : (
-                <img
-                  src="https://ehelperteam.com/wp-content/uploads/2019/09/Broken-images.png"
-                  alt={contentDetails?.title || contentDetails?.name}
-
-                  style={{opacity:'0.6'}}
-                />
-              )}
+                  {contentDetails?.poster_path ? (
+                    <img
+                      src={`https://image.tmdb.org/t/p/w500/${contentDetails?.poster_path}`}
+                      alt={contentDetails?.title || contentDetails?.name}
+                    />
+                  ) : (
+                    <img
+                      src="https://ehelperteam.com/wp-content/uploads/2019/09/Broken-images.png"
+                      alt={contentDetails?.title || contentDetails?.name}
+                      style={{ opacity: "0.6" }}
+                    />
+                  )}
                 </div>
                 <div className="content_right">
                   <h1 className="contenth1">

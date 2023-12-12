@@ -29,7 +29,7 @@ const LatestTrailers = () => {
     // Simulate loading delay (replace this with your actual data fetching logic)
     const timer = setTimeout(() => {
       setLoading(false);
-    }, 5000);
+    }, 100);
 
     return () => clearTimeout(timer);
   }, []);

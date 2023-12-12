@@ -2,6 +2,10 @@
   color: #fff;
   height: auto;
 }
+.assigner{
+  background-color:  rgb(1, 12, 20);
+  border-top: 1px solid #696868;
+}
 
 .classic {
   height: 90vh;

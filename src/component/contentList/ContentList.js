@@ -8,6 +8,8 @@ import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import ReactPaginate from "react-paginate";
 import "../allmovie/allmovie.css";
 import { Link } from "react-router-dom";
+import useLoading from "../useloader/useLoading ";
+import { ClipLoader } from "react-spinners";
 
 const ContentList = ({ contentType, titleProperty }) => {
   const [content, setContent] = useState([]);
@@ -15,6 +17,7 @@ const ContentList = ({ contentType, titleProperty }) => {
   const [selectedGenre, setSelectedGenre] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
+  const loading = useLoading();
 
   useEffect(() => {
     const fetchGenres = async () => {
@@ -69,7 +72,30 @@ const ContentList = ({ contentType, titleProperty }) => {
   };
 
   return (
+
+
+    <div>
+      {loading && (
+        <div
+          className="assigner"
+          style={{
+            height: "100vh",
+            width:"100%",
+            display: "flex",
+            justifyContent: "center",
+            background: "",
+            alignItems: "center",
+          }}
+        >
+          <ClipLoader color="white" size={100} />
+        </div>
+      )}
+      {!loading && (
+        <>
     <div className="movies_container">
+
+
+      
       <div className="movie_end">
         <h2 className="desire2">explore {contentType}</h2>
 
@@ -131,20 +157,22 @@ const ContentList = ({ contentType, titleProperty }) => {
       </div>
 
       <div className="handler">
-
-      <ReactPaginate
-        previousLabel={"Previous"}
-        nextLabel={"Next"}
-        breakLabel={"..."}
-        pageCount={totalPages}
-        marginPagesDisplayed={1}
-        pageRangeDisplayed={2}
-        onPageChange={handlePageClick}
-        containerClassName={"pagination"}
-        activeClassName={"active"}
-        initialPage={0}
-      />
-        </div>
+        <ReactPaginate
+          previousLabel={"Previous"}
+          nextLabel={"Next"}
+          breakLabel={"..."}
+          pageCount={totalPages}
+          marginPagesDisplayed={1}
+          pageRangeDisplayed={2}
+          onPageChange={handlePageClick}
+          containerClassName={"pagination"}
+          activeClassName={"active"}
+          initialPage={0}
+        />
+      </div>
+    </div>
+      </>
+      )}
     </div>
   );
 };
