@@ -4,7 +4,7 @@
         offering an intuitive interface for users to discover, search, and explore movies effortlessly.</p>
 
    <p>
-        👉 <strong>Live Demo:</strong> <a href="#">The Movie DB Demo</a> <!-- Replace with your demo link -->
+        👉 <strong>Live Demo:</strong> <a href="https://movierecap.vercel.app/">The Movie DB Demo</a>
     </p>
 
    <h2>Features:</h2>
