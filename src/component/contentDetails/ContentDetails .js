@@ -68,7 +68,7 @@ const ContentDetails = () => {
         response.data.credits.cast &&
         response.data.credits.cast.length > 0
       ) {
-        setCast(response.data.credits.cast.slice(0, 30));
+        setCast(response.data.credits.cast.slice(0, 20));
       }
 
       // Fetch trailers separately for movies and TV shows
