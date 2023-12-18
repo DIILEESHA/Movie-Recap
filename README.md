@@ -23,6 +23,14 @@
   <p>Get ready to dive into the world of cinema with The Movie DB!</p>
   <br/>
 
+  ## How to Run Locally
+
+1. Clone the repository: `git clone https://github.com/DIILEESHA/Movie-Recap.git`
+2. Install dependencies: `npm install`
+3. Start the development server: `npm start`
+
+   <br/>
+
   <h2>Screenshots of the Project 📸</h2>
 
   ![screencapture-localhost-3000-2023-12-10-20_57_53](https://github.com/DIILEESHA/Movie-Recap/assets/89340276/9330cb8a-044b-4373-a99b-abd3e0cec0cf)
